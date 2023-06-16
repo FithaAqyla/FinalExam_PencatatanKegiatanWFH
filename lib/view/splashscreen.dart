@@ -1,4 +1,6 @@
 import 'package:finalexamflutter/view/color.dart';
+import 'package:finalexamflutter/view/login.dart';
+import 'package:finalexamflutter/view/registrasi.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -48,7 +50,7 @@ class _splashscreenState extends State<splashscreen>
       body: Stack(children: [
         AnimatedContainer(
           duration: const Duration(seconds: 3),
-          height: ssAnimated ? screenHeight / 1.7 : screenHeight,
+          height: ssAnimated ? screenHeight / 1.9 : screenHeight,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.vertical(
@@ -85,8 +87,21 @@ class _splashscreenState extends State<splashscreen>
                     opacity: animateText ? 1 : 0,
                     duration: const Duration(seconds: 2),
                     child: const Text(
-                      'O F F I C E',
-                      style: TextStyle(fontSize: 50.0, color: backgroundss),
+                      'T A S K ',
+                      style: TextStyle(
+                          fontSize: 40.0,
+                          color: backgroundss,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Center(
+                  child: AnimatedOpacity(
+                    opacity: animateText ? 1 : 0,
+                    duration: const Duration(seconds: 2),
+                    child: const Text(
+                      'Monitoring System',
+                      style: TextStyle(fontSize: 20.0, color: backgroundss),
                     ),
                   ),
                 ),
@@ -140,12 +155,39 @@ class _BottomPart extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50)),
                   backgroundColor: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()));
+                },
                 child: Text(
-                  'NEXT'.toUpperCase(),
-                  style: TextStyle(color: backgroundss),
+                  'Login'.toUpperCase(),
+                  style: const TextStyle(color: backgroundss),
                 ),
               ),
+            ),
+            const SizedBox(height: 20.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Dont have an account?",
+                  style: TextStyle(fontSize: 15, color: Colors.white),
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterPage()));
+                    },
+                    child: const Text(
+                      "Register",
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 255, 175, 55)),
+                    ))
+              ],
             ),
             // Align(
             //   child: Container(

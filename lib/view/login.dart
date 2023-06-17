@@ -1,4 +1,5 @@
 import 'package:finalexamflutter/view/color.dart';
+import 'package:finalexamflutter/view/registrasi.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -57,11 +58,16 @@ class _LoginPageState extends State<LoginPage> {
               width: MediaQuery.of(context).size.width - 40,
               margin: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-              ),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.4),
+                        blurRadius: 15,
+                        spreadRadius: 5)
+                  ]),
               child: Container(
-                margin: EdgeInsets.only(top: 20),
+                margin: const EdgeInsets.only(top: 20),
                 child: Column(
                   children: [
                     Row(
@@ -118,11 +124,65 @@ class _LoginPageState extends State<LoginPage> {
                           hintStyle:
                               TextStyle(fontSize: 14, color: textColor1)),
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Dont have an account?",
+                          style: TextStyle(fontSize: 15, color: textColor1),
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => RegisterPage()));
+                            },
+                            child: const Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 255, 175, 55)),
+                            ))
+                      ],
+                    ),
                   ],
                 ),
               ),
             ),
-          )
+          ),
+          Positioned(
+              top: 444,
+              right: 100,
+              left: 100,
+              child: Container(
+                width: 80,
+                height: 80,
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: backgroundss,
+                      // gradient: const LinearGradient(
+                      //     colors: [Colors.yellow, Colors.blue],
+                      //     begin: Alignment.topLeft,
+                      //     end: Alignment.bottomRight),
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(.3),
+                            spreadRadius: 1,
+                            blurRadius: 2,
+                            offset: Offset(0, 1))
+                      ]),
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                  ),
+                ),
+              ))
         ],
       ),
     );

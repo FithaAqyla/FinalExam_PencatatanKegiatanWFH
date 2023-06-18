@@ -1,4 +1,5 @@
 import 'package:finalexamflutter/view/color.dart';
+import 'package:finalexamflutter/view/home_page_karyawan.dart';
 import 'package:finalexamflutter/view/registrasi.dart';
 import 'package:flutter/material.dart';
 
@@ -27,13 +28,14 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Container(),
                     RichText(
                         text: const TextSpan(
                             text: "Welcome Back..",
                             style: TextStyle(
                                 fontSize: 25,
                                 letterSpacing: 2,
-                                color: Colors.yellow,
+                                color: Color.fromARGB(255, 255, 175, 55),
                                 fontWeight: FontWeight.bold),
                             children: [
                           TextSpan(
@@ -74,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'LOGIN',
+                          'SIGN IN',
                           style: const TextStyle(
                               fontSize: 18,
                               color: backgroundss,
@@ -109,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                     const TextField(
                       decoration: InputDecoration(
                           prefixIcon: Icon(
-                            Icons.lock,
+                            Icons.lock_outline,
                             color: iconColor,
                           ),
                           enabledBorder: OutlineInputBorder(
@@ -124,6 +126,27 @@ class _LoginPageState extends State<LoginPage> {
                           hintStyle:
                               TextStyle(fontSize: 14, color: textColor1)),
                     ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    // const TextField(
+                    //   decoration: InputDecoration(
+                    //       prefixIcon: Icon(
+                    //         Icons.person_2_outlined,
+                    //         color: iconColor,
+                    //       ),
+                    //       enabledBorder: OutlineInputBorder(
+                    //           borderRadius:
+                    //               BorderRadius.all(Radius.circular(30.0))),
+                    //       focusedBorder: OutlineInputBorder(
+                    //           borderSide: BorderSide(color: textColor1),
+                    //           borderRadius:
+                    //               BorderRadius.all(Radius.circular(35.0))),
+                    //       contentPadding: EdgeInsets.all(5),
+                    //       hintText: 'Admin/Karyawan',
+                    //       hintStyle:
+                    //           TextStyle(fontSize: 14, color: textColor1)),
+                    // ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -151,7 +174,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Positioned(
-              top: 444,
+              top: 500,
               right: 100,
               left: 100,
               child: Container(
@@ -162,21 +185,30 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: backgroundss,
-                      // gradient: const LinearGradient(
-                      //     colors: [Colors.yellow, Colors.blue],
-                      //     begin: Alignment.topLeft,
-                      //     end: Alignment.bottomRight),
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(.3),
-                            spreadRadius: 1,
-                            blurRadius: 2,
-                            offset: Offset(0, 1))
-                      ]),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100)),
+                    backgroundColor: backgroundss,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePageK()));
+                  },
+                  // decoration: BoxDecoration(
+
+                  //     color: backgroundss,
+
+                  //     borderRadius: BorderRadius.circular(30),
+                  //     boxShadow: [
+                  //       BoxShadow(
+                  //           color: Colors.black.withOpacity(.3),
+                  //           spreadRadius: 1,
+                  //           blurRadius: 2,
+                  //           offset: Offset(0, 1))
+                  //     ]),
                   child: Icon(
                     Icons.arrow_forward,
                     color: Colors.white,

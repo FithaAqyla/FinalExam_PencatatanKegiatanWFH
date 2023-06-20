@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "589337212277",
+    "project_id": "pencatatan-kegiatan-wfh",
+    "storage_bucket": "pencatatan-kegiatan-wfh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589337212277:android:b25519f8673298ede84f3c",
+        "android_client_info": {
+          "package_name": "com.finalexamflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589337212277-n9lrihtpv5fcrs2ubcpsa60t8chf83n7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCODxkJJJSX939WY2jnm2kf9tdlmSYYA84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589337212277-n9lrihtpv5fcrs2ubcpsa60t8chf83n7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

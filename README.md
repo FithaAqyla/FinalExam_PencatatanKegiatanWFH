@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-## Deskripsi Aplikasi
+# Deskripsi Aplikasi
 
 	Ketika wfh (work from home) menjadi norma baru, banyak individu merasa sulit untuk mengatu waktu, memantau produktivitas dan mengelola tugas tugas harian mereka tanpa adanya struktur dan penegawasan yang sama seperti dikantor. Maka aplikasi ini dapat menjadi solusi  yang ideal untuk  memfasilitasi pemantauan dan manajemen aktivitas pengguna dengan ;enih efektif. 
 	

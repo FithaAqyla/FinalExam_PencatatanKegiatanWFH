@@ -1,16 +1,15 @@
-# finalexamflutter
+# TaskMonitoringSystem
 
 A new Flutter project.
 
-## Getting Started
+## Deskripsi Aplikasi
 
-This project is a starting point for a Flutter application.
+	Ketika wfh (work from home) menjadi norma baru, banyak individu merasa sulit untuk mengatu waktu, memantau produktivitas dan mengelola tugas tugas harian mereka tanpa adanya struktur dan penegawasan yang sama seperti dikantor. Maka aplikasi ini dapat menjadi solusi  yang ideal untuk  memfasilitasi pemantauan dan manajemen aktivitas pengguna dengan ;enih efektif. 
+	
+	Aplikasi ini akan memberikan kemampuan terhadap pengguna untuk mengelompokan dan melakukan pemantauan dengan lebih muda. Fitur fitur yang akan disediakan dapat membantu kolaborasi dn komunikasi antara karyawan dan dept head yang bekerja jarak jauh.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ - Flowchart Karyawan
+   ![karyawan flowchart](https://github.com/FithaAqyla/FinalExam_TaskMonitoringSystem/assets/96332161/e9805d7c-34f7-425f-920e-c000da135b7c)
+   - Flowchart DeptHead
+    ![dept head flowchart](https://github.com/FithaAqyla/FinalExam_TaskMonitoringSystem/assets/96332161/fa0b65db-0628-4f3f-9180-edabed4a22fc)
+  - Usecase 

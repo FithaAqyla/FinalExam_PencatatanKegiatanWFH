@@ -33,19 +33,61 @@ class _TaskPageState extends State<TaskPage> {
                 padding: const EdgeInsets.all(16),
                 margin: const EdgeInsets.only(bottom: 8),
                 decoration: BoxDecoration(
-                    color: backgroundss,
-                    borderRadius: BorderRadius.circular(8)),
+                  color: backgroundss,
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       item.title,
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: const TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Status(),
+                        InkWell(
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      RadioListTile;
+                                      return SizedBox(
+                                        height: 200,
+                                        child: Center(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: <Widget>[
+                                              ElevatedButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(context),
+                                                  child: const Icon(
+                                                      Icons.cancel_outlined,),),
+                                              RadioListTile(
+                                                  value: 1,
+                                                  groupValue: 1,
+                                                  onChanged: ),
+                                                  RadioListTile(
+                                                  value: 2,
+                                                  groupValue: 2,
+                                                  onChanged: ),RadioListTile(
+                                                  value: 3,
+                                                  groupValue: 3,
+                                                  onChanged: ),RadioListTile(
+                                                  value: 4,
+                                                  groupValue: 4,
+                                                  onChanged: )
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                                child: const Status(),),),
                       ],
                     )
                   ],

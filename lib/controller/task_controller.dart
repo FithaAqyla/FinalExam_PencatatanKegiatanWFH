@@ -34,6 +34,6 @@ class TaskController {
 
   Future deleteContact(String id) async {
     await taskCollection.doc(id).delete();
-    return data;
+    await initial();
   }
 }

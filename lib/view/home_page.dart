@@ -2,6 +2,7 @@ import 'package:finalexamflutter/controller/home_controller.dart';
 import 'package:finalexamflutter/model/home_model.dart';
 import 'package:finalexamflutter/view/color.dart';
 import 'package:finalexamflutter/view/login.dart';
+import 'package:finalexamflutter/view/status.dart';
 import 'package:finalexamflutter/view/task.dart';
 import 'package:flutter/material.dart';
 
@@ -271,41 +272,6 @@ class _HomePageState extends State<HomePage> {
           ]),
         );
       },
-    );
-  }
-}
-
-class Status extends StatelessWidget {
-  const Status({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-            100,
-          ),
-          color: Colors.white),
-      child: Row(
-        children: [
-          Container(
-            height: 7,
-            width: 7,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100), color: Colors.blue),
-          ),
-          SizedBox(
-            width: 8,
-          ),
-          Text(
-            'dont',
-            style: TextStyle(color: Colors.black, fontSize: 12),
-          )
-        ],
-      ),
     );
   }
 }

@@ -10,11 +10,11 @@ class TaskItemModel {
   final String member;
 
   TaskItemModel({
-    this.id = '',
     required this.title,
     required this.date,
     required this.status,
     required this.content,
+    this.id = '',
     this.member = '',
   });
 

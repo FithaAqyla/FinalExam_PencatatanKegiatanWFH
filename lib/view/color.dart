@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const Color backgroundss = Color.fromARGB(255, 11, 21, 109);
+const Color backgroundss = Color(0xff0C134F);
 const Color iconColor = Color(0xFFB6C7D1);
 const Color activeColor = Color(0xFF09126C);
 const Color textColor1 = Color(0XFFA7BCC7);

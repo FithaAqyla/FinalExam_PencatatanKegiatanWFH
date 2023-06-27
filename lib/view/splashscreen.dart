@@ -4,14 +4,14 @@ import 'package:finalexamflutter/view/registrasi.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class splashscreen extends StatefulWidget {
-  const splashscreen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<splashscreen> createState() => _splashscreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _splashscreenState extends State<splashscreen>
+class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late AnimationController _ss;
   bool ssAnimated = false;
@@ -19,7 +19,6 @@ class _splashscreenState extends State<splashscreen>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _ss = AnimationController(vsync: this);
     _ss.addListener(() {
@@ -162,7 +161,7 @@ class _BottomPart extends StatelessWidget {
                           builder: (context) => const LoginPage()));
                 },
                 child: Text(
-                  'Login'.toUpperCase(),
+                  'Sign In'.toUpperCase(),
                   style: const TextStyle(color: backgroundss),
                 ),
               ),
@@ -180,10 +179,10 @@ class _BottomPart extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RegisterPage()));
+                              builder: (context) => const RegisterPage()));
                     },
                     child: const Text(
-                      "Register",
+                      "Sign Up",
                       style:
                           TextStyle(color: Color.fromARGB(255, 255, 175, 55)),
                     ))

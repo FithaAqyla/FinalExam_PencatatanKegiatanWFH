@@ -1,8 +1,7 @@
 import 'package:finalexamflutter/controller/task_controller.dart';
 import 'package:finalexamflutter/view/color.dart';
-import 'package:finalexamflutter/view/home_page.dart';
-import 'package:finalexamflutter/view/status.dart';
 import 'package:finalexamflutter/view/task_detail.dart';
+import 'package:finalexamflutter/widgets/status.dart';
 import 'package:flutter/material.dart';
 
 class TaskPage extends StatefulWidget {
@@ -26,7 +25,7 @@ class _TaskPageState extends State<TaskPage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
+                MaterialPageRoute<Widget>(
                   builder: (context) => const TaskDetail(),
                 ),
               );
@@ -45,12 +44,17 @@ class _TaskPageState extends State<TaskPage> {
               final item = taskController.data!.tasks[index];
               return InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return TaskDetail(
-                      isEdit: false,
-                      documentId: item.id,
-                    );
-                  }));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<Widget>(
+                      builder: (context) {
+                        return TaskDetail(
+                          isEdit: false,
+                          documentId: item.id,
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: Container(
                   padding: const EdgeInsets.all(16),
@@ -67,7 +71,38 @@ class _TaskPageState extends State<TaskPage> {
                         style:
                             const TextStyle(color: Colors.white, fontSize: 18),
                       ),
-                      const Status(),
+                      IconButton(
+                        onPressed: () {
+                          // taskController.deleteContact(id).then(
+                          //   (value) {
+                          //     setState(() {
+                          //       taskController.initial();
+                          //     });
+                          //   },
+                          // );
+                        },
+                        icon: const Icon(
+                          Icons.delete_outline_outlined,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          if (taskController.data?.user.role == 1) ...[
+                            Text(
+                              item.member,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                          ],
+                          const Spacer(),
+                          const Status(),
+                        ],
+                      ),
                     ],
                   ),
                 ),

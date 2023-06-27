@@ -23,9 +23,17 @@ class TaskController {
     final userSnapshot = await userCollection.doc(user.uid).get();
     final userModel = UserModel.fromJson(jsonEncode(userSnapshot.data()));
     final taskSnapshot = await taskCollection.get();
-    final listTask =
-        taskSnapshot.docs.map((e) => TaskItemModel.fromMap(e.data())).toList();
+    final listTask = taskSnapshot.docs.map((e) {
+      final item = TaskItemModel.fromMap(e.data());
+      print(e.id);
+      return item.copyWith(id: e.id);
+    }).toList();
     final result = TaskModel(user: userModel, tasks: listTask);
     data = result;
+  }
+
+  Future deleteContact(String id) async {
+    await taskCollection.doc(id).delete();
+    return data;
   }
 }

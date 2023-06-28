@@ -24,8 +24,12 @@ class HomeController {
 
     final taskSnapshot = await taskCollection.get();
 
-    final listTask =
-        taskSnapshot.docs.map((e) => TaskItemModel.fromMap(e.data())).toList();
+    final listTask = taskSnapshot.docs.map((e) {
+      final task = TaskItemModel.fromMap(e.data());
+      return task.copyWith(
+        id: e.id,
+      );
+    }).toList();
 
     final result = HomeModel(user: userModel, tasks: listTask);
     data = result;

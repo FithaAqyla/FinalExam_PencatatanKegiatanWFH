@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:finalexamflutter/model/task_Item_model.dart';
+import 'package:finalexamflutter/model/task_item_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +37,7 @@ class TaskDetailController {
 
   void save(TaskItemModel item) {
     final task = item.copyWith(
-      member: auth.currentUser?.uid ?? '',
+      member: auth.currentUser?.email ?? '',
     );
 
     taskCollection.add(

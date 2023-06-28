@@ -12,9 +12,11 @@ class Status extends StatelessWidget {
   const Status({
     super.key,
     this.type = StatusType.ready,
+    this.isExpand = false,
   });
 
   final StatusType type;
+  final bool isExpand;
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +41,13 @@ class Status extends StatelessWidget {
               color: changeStatusColor(type),
             ),
           ),
-          const SizedBox(
-            width: 8,
-          ),
-          Text(
-            changeStatusText(type),
-            style: const TextStyle(color: Colors.black, fontSize: 12),
-          )
+          if (isExpand) ...[
+            const SizedBox(width: 8),
+            Text(
+              changeStatusText(type),
+              style: const TextStyle(color: Colors.black, fontSize: 12),
+            ),
+          ]
         ],
       ),
     );

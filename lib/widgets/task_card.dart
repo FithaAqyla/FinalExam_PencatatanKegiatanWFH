@@ -82,21 +82,21 @@ class TaskCard extends StatelessWidget {
                   ),
                   isExpand: isStatusExpanded,
                 ),
-                IconButton(
-                  onPressed: () {
-                    // taskController.deleteContact(id).then(
-                    //   (value) {
-                    //     setState(() {
-                    //       taskController.initial();
-                    //     });
-                    //   },
-                    // );
-                  },
-                  icon: const Icon(
-                    Icons.delete_outline_outlined,
-                    color: Colors.white,
-                  ),
-                ),
+                // IconButton(
+                //   onPressed: () {
+                //     // taskController.deleteContact(id).then(
+                //     //   (value) {
+                //     //     setState(() {
+                //     //       taskController.initial();
+                //     //     });
+                //     //   },
+                //     // );
+                //   },
+                //   icon: const Icon(
+                //     Icons.delete_outline_outlined,
+                //     color: Colors.white,
+                //   ),
+                // ),
               ],
             )
           ],

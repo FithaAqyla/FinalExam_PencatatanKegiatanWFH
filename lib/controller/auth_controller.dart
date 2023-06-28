@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalexamflutter/model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,7 +19,6 @@ class AuthController {
       );
       final userAuth = credential.user;
       await userCollection.doc(userAuth!.uid).set(userModel.toMap());
-      final test = userCollection.get();
       return userModel;
     } catch (e) {
       log(e.toString());
@@ -46,6 +44,7 @@ class AuthController {
         return null;
       }
     }
+    return null;
   }
 
   Future<void> isLogin() async {

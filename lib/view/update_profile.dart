@@ -1,23 +1,45 @@
+import 'package:finalexamflutter/controller/auth_controller.dart';
+import 'package:finalexamflutter/model/user_model.dart';
 import 'package:finalexamflutter/view/color.dart';
 import 'package:finalexamflutter/view/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
-class EditProfilPage extends StatefulWidget {
-  const EditProfilPage({super.key});
+class UpdateProfilePage extends StatefulWidget {
+  const UpdateProfilePage({super.key});
 
   @override
-  State<EditProfilPage> createState() => _EditProfilPageState();
+  State<UpdateProfilePage> createState() => _UpdateProfilePageState();
 }
 
-class _EditProfilPageState extends State<EditProfilPage> {
+class _UpdateProfilePageState extends State<UpdateProfilePage> {
+  final authController = AuthController();
+
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final alamatController = TextEditingController();
   final nikController = TextEditingController();
+
   final formKey = GlobalKey<FormState>();
+
+  UserModel? user;
+
+  @override
+  void initState() {
+    super.initState();
+    authController.getUser().then((value) {
+      nameController.text = value.name;
+      emailController.text = value.email;
+      passwordController.text = value.password;
+      alamatController.text = value.alamat;
+      nikController.text = value.nik;
+
+      setState(() {
+        user = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +72,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
                           )
                         ],
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 30,
                       ),
                     ],
@@ -103,13 +125,13 @@ class _EditProfilPageState extends State<EditProfilPage> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
-                                Radius.circular(30.0),
+                                Radius.circular(30),
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: textColor1),
                               borderRadius: BorderRadius.all(
-                                Radius.circular(35.0),
+                                Radius.circular(35),
                               ),
                             ),
                             contentPadding: EdgeInsets.all(5),
@@ -119,7 +141,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return "username should not be empty";
+                              return 'username should not be empty';
                             }
                             return null;
                           },
@@ -136,13 +158,13 @@ class _EditProfilPageState extends State<EditProfilPage> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
-                                Radius.circular(30.0),
+                                Radius.circular(30),
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: textColor1),
                               borderRadius: BorderRadius.all(
-                                Radius.circular(35.0),
+                                Radius.circular(35),
                               ),
                             ),
                             contentPadding: EdgeInsets.all(5),
@@ -172,13 +194,13 @@ class _EditProfilPageState extends State<EditProfilPage> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
-                                Radius.circular(30.0),
+                                Radius.circular(30),
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: textColor1),
                               borderRadius: BorderRadius.all(
-                                Radius.circular(35.0),
+                                Radius.circular(35),
                               ),
                             ),
                             contentPadding: EdgeInsets.all(5),
@@ -209,13 +231,13 @@ class _EditProfilPageState extends State<EditProfilPage> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
-                                Radius.circular(30.0),
+                                Radius.circular(30),
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: textColor1),
                               borderRadius: BorderRadius.all(
-                                Radius.circular(35.0),
+                                Radius.circular(35),
                               ),
                             ),
                             contentPadding: EdgeInsets.all(5),
@@ -242,13 +264,13 @@ class _EditProfilPageState extends State<EditProfilPage> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
-                                Radius.circular(30.0),
+                                Radius.circular(30),
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: textColor1),
                               borderRadius: BorderRadius.all(
-                                Radius.circular(35.0),
+                                Radius.circular(35),
                               ),
                             ),
                             contentPadding: EdgeInsets.all(5),
@@ -281,13 +303,25 @@ class _EditProfilPageState extends State<EditProfilPage> {
                               ),
                               backgroundColor: backgroundss,
                             ),
-                            onPressed: () async {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const ProfilePage(),
+                            onPressed: () {
+                              authController
+                                  .editUser(
+                                user!.copyWith(
+                                  name: nameController.text,
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                  alamat: alamatController.text,
+                                  nik: nikController.text,
                                 ),
-                              );
+                              )
+                                  .then((value) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute<Widget>(
+                                    builder: (context) => const ProfilePage(),
+                                  ),
+                                );
+                              });
                             },
                             child: const Text('SAVE'),
                           ),

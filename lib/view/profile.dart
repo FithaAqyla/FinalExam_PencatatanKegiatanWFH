@@ -149,60 +149,62 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * .3,
-                          height: 80,
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100),
+                        Row(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width * .4,
+                              height: 80,
+                              padding: const EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(50),
                               ),
-                              backgroundColor: backgroundss,
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute<Widget>(
-                                  builder: (context) => const EditProfilPage(),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+                                  backgroundColor: backgroundss,
                                 ),
-                              );
-                            },
-                            child: const Text('Edit'),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * .4,
-                          height: 80,
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute<Widget>(
+                                      builder: (context) =>
+                                          const UpdateProfilePage(),
+                                    ),
+                                  );
+                                },
+                                child: const Text('Edit'),
                               ),
-                              backgroundColor: backgroundss,
                             ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute<Widget>(
-                                  builder: (context) => const HomePage(),
+                            Container(
+                              width: MediaQuery.of(context).size.width * .4,
+                              height: 80,
+                              padding: const EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+                                  backgroundColor: backgroundss,
                                 ),
-                              );
-                            },
-                            child: const Text('Back to Home'),
-                          ),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute<Widget>(
+                                      builder: (context) => const HomePage(),
+                                    ),
+                                  );
+                                },
+                                child: const Text('Back to Home'),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

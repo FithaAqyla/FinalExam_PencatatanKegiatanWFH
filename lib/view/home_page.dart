@@ -1,5 +1,5 @@
 import 'package:finalexamflutter/controller/home_controller.dart';
-import 'package:finalexamflutter/model/home_model.dart';
+import 'package:finalexamflutter/view/color.dart';
 import 'package:finalexamflutter/view/login.dart';
 import 'package:finalexamflutter/view/profile.dart';
 import 'package:finalexamflutter/view/task.dart';
@@ -15,37 +15,47 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final homeController = HomeController();
-  HomeModel? data;
+
+  @override
+  void initState() {
+    super.initState();
+    homeController.initial().then((value) {
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: homeController.initial(),
-      builder: (context, snapshot) {
-        return Scaffold(
-          backgroundColor: Colors.white,
-          body: SafeArea(
-            child: ListView(
-              padding: const EdgeInsets.all(16),
+    return Scaffold(
+      backgroundColor: backgroundColor,
+      body: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          header(context),
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                header(context),
-                const SizedBox(height: 20),
                 menus(context),
-                const SizedBox(height: 20),
+                const SizedBox(height: 16),
                 todays(),
               ],
             ),
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 
   Widget todays() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          children: const [
+          children: [
             Icon(Icons.calendar_month),
             Text(
               'Hari Ini',
@@ -57,7 +67,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         const SizedBox(
-          height: 20,
+          height: 8,
         ),
         GridView.count(
           childAspectRatio: 20 / 9,
@@ -128,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
+                    MaterialPageRoute<Widget>(
                       builder: (context) => const ProfilePage(),
                     ),
                   );
@@ -155,40 +165,50 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget header(BuildContext context) {
-    return Row(
-      children: [
-        const CircleAvatar(
-          backgroundImage: AssetImage('assets/image/profile.jpg'),
-          radius: 30,
-        ),
-        const SizedBox(width: 16),
-        Text(
-          'Hello, ${homeController.data?.user.name ?? 'Guest'}',
-          style: const TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
+    return Container(
+      color: backgroundss,
+      padding: EdgeInsets.only(
+        left: 16,
+        right: 16,
+        top: MediaQuery.of(context).padding.top + 16,
+        bottom: 16,
+      ),
+      child: Row(
+        children: [
+          const CircleAvatar(
+            backgroundImage: AssetImage('assets/image/profile.jpg'),
+            radius: 30,
           ),
-        ),
-        const Spacer(),
-        IconButton(
-          onPressed: () {
-            homeController.logout().then((value) {
-              if (value) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<Widget>(
-                    builder: (context) {
-                      return const LoginPage();
-                    },
-                  ),
-                );
-              }
-            });
-          },
-          icon: const Icon(Icons.logout),
-        )
-      ],
+          const SizedBox(width: 16),
+          Text(
+            'Hello, ${homeController.data?.user.name ?? 'Guest'}',
+            style: const TextStyle(
+              color: Colors.amber,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          const Spacer(),
+          IconButton(
+            onPressed: () {
+              homeController.logout().then((value) {
+                if (value) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<Widget>(
+                      builder: (context) {
+                        return const LoginPage();
+                      },
+                    ),
+                  );
+                }
+              });
+            },
+            icon: const Icon(Icons.logout),
+            color: Colors.white,
+          )
+        ],
+      ),
     );
   }
 }

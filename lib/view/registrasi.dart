@@ -46,18 +46,21 @@ class _RegisterPageState extends State<RegisterPage> {
                         text: const TextSpan(
                           text: "Create a new account",
                           style: TextStyle(
-                              fontSize: 25,
-                              letterSpacing: 2,
-                              color: Color.fromARGB(255, 255, 175, 55),
-                              fontWeight: FontWeight.bold),
+                            fontSize: 25,
+                            letterSpacing: 2,
+                            color: Color.fromARGB(255, 255, 175, 55),
+                            fontWeight: FontWeight.bold,
+                          ),
                           children: [
                             TextSpan(
-                                text:
-                                    '\n\nEnter your personal details\nand start your journey with us',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.normal))
+                              text:
+                                  '\n\nEnter your personal details\nand start your journey with us',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -75,27 +78,30 @@ class _RegisterPageState extends State<RegisterPage> {
                   width: MediaQuery.of(context).size.width - 40,
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.4),
-                            blurRadius: 15,
-                            spreadRadius: 5)
-                      ]),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.4),
+                        blurRadius: 15,
+                        spreadRadius: 5,
+                      )
+                    ],
+                  ),
                   child: Form(
                     key: formKey,
                     child: Column(
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
+                          children: const [
+                            Text(
                               'SIGN UP',
                               style: TextStyle(
-                                  fontSize: 18,
-                                  color: backgroundss,
-                                  fontWeight: FontWeight.bold),
+                                fontSize: 18,
+                                color: backgroundss,
+                                fontWeight: FontWeight.bold,
+                              ),
                             )
                           ],
                         ),
@@ -105,21 +111,26 @@ class _RegisterPageState extends State<RegisterPage> {
                         TextFormField(
                           controller: nameController,
                           decoration: const InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.person_2_outlined,
-                                color: iconColor,
+                            prefixIcon: Icon(
+                              Icons.person_2_outlined,
+                              color: iconColor,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(30.0),
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30.0))),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: textColor1),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(35.0))),
-                              contentPadding: EdgeInsets.all(5),
-                              hintText: 'Username',
-                              hintStyle:
-                                  TextStyle(fontSize: 14, color: textColor1)),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: textColor1),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(35.0),
+                              ),
+                            ),
+                            contentPadding: EdgeInsets.all(5),
+                            hintText: 'Username',
+                            hintStyle:
+                                TextStyle(fontSize: 14, color: textColor1),
+                          ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "username should not be empty";
@@ -132,22 +143,27 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         TextFormField(
                           controller: emailController,
-                          decoration: InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.email_outlined,
-                                color: iconColor,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(
+                              Icons.email_outlined,
+                              color: iconColor,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(30.0),
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30.0))),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: textColor1),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(35.0))),
-                              contentPadding: EdgeInsets.all(5),
-                              hintText: 'Email',
-                              hintStyle:
-                                  TextStyle(fontSize: 14, color: textColor1)),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: textColor1),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(35.0),
+                              ),
+                            ),
+                            contentPadding: EdgeInsets.all(5),
+                            hintText: 'Email',
+                            hintStyle:
+                                TextStyle(fontSize: 14, color: textColor1),
+                          ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Email should not be empty';
@@ -164,21 +180,26 @@ class _RegisterPageState extends State<RegisterPage> {
                         TextFormField(
                           controller: passwordController,
                           decoration: const InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.lock_outline,
-                                color: iconColor,
+                            prefixIcon: Icon(
+                              Icons.lock_outline,
+                              color: iconColor,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(30.0),
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30.0))),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: textColor1),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(35.0))),
-                              contentPadding: EdgeInsets.all(5),
-                              hintText: 'Password',
-                              hintStyle:
-                                  TextStyle(fontSize: 14, color: textColor1)),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: textColor1),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(35.0),
+                              ),
+                            ),
+                            contentPadding: EdgeInsets.all(5),
+                            hintText: 'Password',
+                            hintStyle:
+                                TextStyle(fontSize: 14, color: textColor1),
+                          ),
                           obscureText: true,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -196,21 +217,26 @@ class _RegisterPageState extends State<RegisterPage> {
                         TextFormField(
                           controller: alamatController,
                           decoration: const InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.lock_outline,
-                                color: iconColor,
+                            prefixIcon: Icon(
+                              Icons.lock_outline,
+                              color: iconColor,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(30.0),
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30.0))),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: textColor1),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(35.0))),
-                              contentPadding: EdgeInsets.all(5),
-                              hintText: 'Alamat',
-                              hintStyle:
-                                  TextStyle(fontSize: 14, color: textColor1)),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: textColor1),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(35.0),
+                              ),
+                            ),
+                            contentPadding: EdgeInsets.all(5),
+                            hintText: 'Alamat',
+                            hintStyle:
+                                TextStyle(fontSize: 14, color: textColor1),
+                          ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Alamat should not be empty';
@@ -224,21 +250,26 @@ class _RegisterPageState extends State<RegisterPage> {
                         TextFormField(
                           controller: nikController,
                           decoration: const InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.lock_outline,
-                                color: iconColor,
+                            prefixIcon: Icon(
+                              Icons.lock_outline,
+                              color: iconColor,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(30.0),
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30.0))),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: textColor1),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(35.0))),
-                              contentPadding: EdgeInsets.all(5),
-                              hintText: 'NIK',
-                              hintStyle:
-                                  TextStyle(fontSize: 14, color: textColor1)),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: textColor1),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(35.0),
+                              ),
+                            ),
+                            contentPadding: EdgeInsets.all(5),
+                            hintText: 'NIK',
+                            hintStyle:
+                                TextStyle(fontSize: 14, color: textColor1),
+                          ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'NIK should not be empty';
@@ -260,44 +291,62 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(100)),
+                                borderRadius: BorderRadius.circular(100),
+                              ),
                               backgroundColor: backgroundss,
                             ),
                             onPressed: () async {
                               if (!formKey.currentState!.validate()) {
                                 return;
                               }
-                              await authController.addUser(UserModel(
-                                name: nameController.text,
-                                email: emailController.text,
-                                password: passwordController.text,
-                                alamat: passwordController.text,
-                                nik: nikController.text,
-                                role: 2,
-                              ));
+                              await authController.addUser(
+                                UserModel(
+                                  name: nameController.text,
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                  alamat: passwordController.text,
+                                  nik: nikController.text,
+                                  role: 2,
+                                ),
+                              );
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const LoginPage()));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const LoginPage(),
+                                ),
+                              );
                             },
-                            // decoration: BoxDecoration(
-
-                            //     color: backgroundss,
-
-                            //     borderRadius: BorderRadius.circular(30),
-                            //     boxShadow: [
-                            //       BoxShadow(
-                            //           color: Colors.black.withOpacity(.3),
-                            //           spreadRadius: 1,
-                            //           blurRadius: 2,
-                            //           offset: Offset(0, 1))
-                            //     ]),
                             child: const Icon(
                               Icons.arrow_forward,
                               color: Colors.white,
                             ),
                           ),
-                        )
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "Already have an account?",
+                              style: TextStyle(fontSize: 15, color: textColor1),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const LoginPage(),
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                "Sign In",
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 255, 175, 55),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ],
                     ),
                   ),

@@ -46,18 +46,21 @@ class _LoginPageState extends State<LoginPage> {
                     text: const TextSpan(
                       text: "Welcome Back..",
                       style: TextStyle(
-                          fontSize: 25,
-                          letterSpacing: 2,
-                          color: Color.fromARGB(255, 255, 175, 55),
-                          fontWeight: FontWeight.bold),
+                        fontSize: 25,
+                        letterSpacing: 2,
+                        color: Color.fromARGB(255, 255, 175, 55),
+                        fontWeight: FontWeight.bold,
+                      ),
                       children: [
                         TextSpan(
-                            text:
-                                '\n\nTo keep connected with us please login \nwith your personal info',
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.white,
-                                fontWeight: FontWeight.normal))
+                          text:
+                              '\n\nTo keep connected with us please login \nwith your personal info',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -76,14 +79,16 @@ class _LoginPageState extends State<LoginPage> {
               width: MediaQuery.of(context).size.width - 40,
               margin: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
-                        blurRadius: 15,
-                        spreadRadius: 5)
-                  ]),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.4),
+                    blurRadius: 15,
+                    spreadRadius: 5,
+                  ),
+                ],
+              ),
               child: Container(
                 margin: const EdgeInsets.only(top: 20),
                 child: Form(
@@ -92,8 +97,8 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
+                        children: const [
+                          Text(
                             'SIGN IN',
                             style: TextStyle(
                               fontSize: 18,
@@ -114,12 +119,16 @@ class _LoginPageState extends State<LoginPage> {
                             color: iconColor,
                           ),
                           enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0))),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(30.0),
+                            ),
+                          ),
                           focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: textColor1),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(35.0))),
+                            borderSide: BorderSide(color: textColor1),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(35.0),
+                            ),
+                          ),
                           contentPadding: EdgeInsets.all(5),
                           hintText: 'Email',
                           hintStyle: TextStyle(fontSize: 14, color: textColor1),
@@ -138,33 +147,40 @@ class _LoginPageState extends State<LoginPage> {
                         controller: passwordController,
                         obscureText: _togglepass,
                         decoration: InputDecoration(
-                            prefixIcon: const Icon(
-                              Icons.lock_outline,
-                              color: iconColor,
+                          prefixIcon: const Icon(
+                            Icons.lock_outline,
+                            color: iconColor,
+                          ),
+                          suffix: InkWell(
+                            onTap: () {
+                              setState(() {
+                                _togglepass = !_togglepass;
+                              });
+                            },
+                            child: Icon(
+                              _togglepass
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
                             ),
-                            suffix: InkWell(
-                              onTap: () {
-                                setState(() {
-                                  _togglepass = !_togglepass;
-                                });
-                              },
-                              child: Icon(
-                                _togglepass
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
-                              ),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(30.0),
                             ),
-                            enabledBorder: const OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30.0))),
-                            focusedBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(color: textColor1),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(35.0))),
-                            contentPadding: const EdgeInsets.all(5),
-                            hintText: 'Password',
-                            hintStyle: const TextStyle(
-                                fontSize: 14, color: textColor1)),
+                          ),
+                          focusedBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(color: textColor1),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(35.0),
+                            ),
+                          ),
+                          contentPadding: const EdgeInsets.all(5),
+                          hintText: 'Password',
+                          hintStyle: const TextStyle(
+                            fontSize: 14,
+                            color: textColor1,
+                          ),
+                        ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Password cannot be empty';
@@ -201,18 +217,21 @@ class _LoginPageState extends State<LoginPage> {
                             style: TextStyle(fontSize: 15, color: textColor1),
                           ),
                           TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const RegisterPage()));
-                              },
-                              child: const Text(
-                                "Sign Up",
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 255, 175, 55)),
-                              ))
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const RegisterPage(),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 255, 175, 55),
+                              ),
+                            ),
+                          )
                         ],
                       ),
                       Container(
@@ -226,7 +245,8 @@ class _LoginPageState extends State<LoginPage> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)),
+                              borderRadius: BorderRadius.circular(100),
+                            ),
                             backgroundColor: backgroundss,
                           ),
                           onPressed: () async {
@@ -239,16 +259,18 @@ class _LoginPageState extends State<LoginPage> {
                             );
                             if (user == null) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                   content: Text('User Not Found'),
                                   backgroundColor: Colors.red,
                                 ),
                               );
                             } else {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const HomePage()));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomePage(),
+                                ),
+                              );
                             }
                           },
                           // decoration: BoxDecoration(

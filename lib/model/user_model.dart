@@ -44,4 +44,22 @@ class UserModel {
 
   factory UserModel.fromJson(String source) =>
       UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  UserModel copyWith({
+    String? name,
+    String? email,
+    String? password,
+    String? alamat,
+    String? nik,
+    int? role,
+  }) {
+    return UserModel(
+      name: name ?? this.name,
+      email: email ?? this.email,
+      password: password ?? this.password,
+      alamat: alamat ?? this.alamat,
+      nik: nik ?? this.nik,
+      role: role ?? this.role,
+    );
+  }
 }

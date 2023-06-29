@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finalexamflutter/model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -52,5 +53,18 @@ class AuthController {
     if (credential != null) {
       isLoggedIn = true;
     }
+  }
+
+  Future<UserModel> getUser() async {
+    final user = auth.currentUser;
+    final userDoc = await userCollection.doc(user!.uid).get();
+    final userJson = jsonEncode(userDoc.data());
+    return UserModel.fromJson(userJson);
+  }
+
+  Future<void> editUser(UserModel newUser) async {
+    final user = auth.currentUser;
+    await userCollection.doc(user!.uid).update(newUser.toMap());
+    await auth.currentUser!.updateEmail(newUser.email);
   }
 }

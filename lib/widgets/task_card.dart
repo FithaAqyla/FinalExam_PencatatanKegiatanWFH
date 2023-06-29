@@ -84,13 +84,17 @@ class TaskCard extends StatelessWidget {
                   Row(
                     children: [
                       if (isDeptHead)
-                        Text(
-                          item.member,
-                          style: const TextStyle(
-                            color: Colors.white,
+                        Expanded(
+                          child: Text(
+                            item.member,
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                      const Spacer(),
+                      const SizedBox(width: 8),
                       Status(
                         type: StatusType.values.firstWhere(
                           (element) => element.index == (item.status - 1),

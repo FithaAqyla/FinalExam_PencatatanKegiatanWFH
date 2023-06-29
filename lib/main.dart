@@ -1,6 +1,6 @@
 import 'package:finalexamflutter/controller/auth_controller.dart';
 import 'package:finalexamflutter/view/home_page.dart';
-import 'package:finalexamflutter/view/login.dart';
+import 'package:finalexamflutter/view/profile.dart';
 import 'package:finalexamflutter/view/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

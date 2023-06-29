@@ -15,6 +15,14 @@ class _TaskPageState extends State<TaskPage> {
   final taskController = TaskController();
 
   @override
+  void initState() {
+    super.initState();
+    taskController.initial().then((value) {
+      setState(() {});
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -34,29 +42,27 @@ class _TaskPageState extends State<TaskPage> {
           )
         ],
       ),
-      body: FutureBuilder(
-        future: taskController.initial(),
-        builder: (context, snapshot) => SafeArea(
-          child: ListView.builder(
-            padding: const EdgeInsets.all(18),
-            itemCount: taskController.data?.tasks.length ?? 0,
-            itemBuilder: (context, index) {
-              final item = taskController.data!.tasks[index];
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: TaskCard(
-                  item: item,
-                  isDeptHead: taskController.data?.user.role == 1,
-                  maxTitleLines: 3,
-                  isStatusExpanded: true,
-                  onBack: () async {
-                    await taskController.initial();
+      body: SafeArea(
+        child: ListView.builder(
+          padding: const EdgeInsets.all(18),
+          itemCount: taskController.data?.tasks.length ?? 0,
+          itemBuilder: (context, index) {
+            final item = taskController.data!.tasks[index];
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: TaskCard(
+                item: item,
+                isDeptHead: taskController.data?.user.role == 1,
+                maxTitleLines: 3,
+                isStatusExpanded: true,
+                onBack: () {
+                  taskController.initial().then((value) {
                     setState(() {});
-                  },
-                ),
-              );
-            },
-          ),
+                  });
+                },
+              ),
+            );
+          },
         ),
       ),
     );

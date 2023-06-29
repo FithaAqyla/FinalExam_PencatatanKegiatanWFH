@@ -1,8 +1,8 @@
-import 'package:finalexamflutter/controller/home_controller.dart';
-import 'package:finalexamflutter/model/home_model.dart';
-
+import 'package:finalexamflutter/controller/auth_controller.dart';
+import 'package:finalexamflutter/model/user_model.dart';
 import 'package:finalexamflutter/view/color.dart';
 import 'package:finalexamflutter/view/home_page.dart';
+import 'package:finalexamflutter/view/update_profile.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -13,15 +13,19 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final homeController = HomeController();
+  final authController = AuthController();
   final formKey = GlobalKey<FormState>();
-  HomeModel? data;
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   homeController.initial();
-  // }
+
+  UserModel? user;
+
+  @override
+  void initState() {
+    super.initState();
+    authController.getUser().then((value) {
+      user = value;
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
       backgroundColor: backgroundColor,
       body: SingleChildScrollView(
         child: SizedBox(
-          height: MediaQuery.of(context).size.height * 1.2,
+          height: MediaQuery.of(context).size.height,
           child: Stack(
             fit: StackFit.expand,
             children: [
@@ -46,8 +50,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       RichText(
                         text: TextSpan(
-                          text: "Profile",
-                          style: TextStyle(
+                          text: 'Profile',
+                          style: const TextStyle(
                             fontSize: 25,
                             letterSpacing: 2,
                             color: Color.fromARGB(255, 255, 175, 55),
@@ -55,9 +59,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                           children: [
                             TextSpan(
-                              text:
-                                  '\nHello, ${homeController.data?.user.name ?? ''} ',
-                              style: TextStyle(
+                              text: '\nHello, ${user?.name ?? ''} ',
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -94,63 +97,86 @@ class _ProfilePageState extends State<ProfilePage> {
                     key: formKey,
                     child: Column(
                       children: [
-                        Container(
+                        DecoratedBox(
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(30),
                           ),
-                          child: (Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const [
                               CircleAvatar(
-                                maxRadius: 50.0,
-                                minRadius: 50.0,
+                                maxRadius: 50,
+                                minRadius: 50,
                                 backgroundImage:
                                     AssetImage('assets/image/profile.jpg'),
                               )
                             ],
-                          )),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Card(
-                          elevation: 10,
-                          child: ListTile(
-                            title: Text(
-                                'Nik     :  ${homeController.data?.user.nik ?? ''} '),
-                          ),
-                        ),
-                        Card(
-                          elevation: 10,
-                          child: ListTile(
-                            title: Text(
-                                'Name   :  ${homeController.data?.user.name ?? 'Guest'} '),
-                          ),
-                        ),
-                        Card(
-                          elevation: 10,
-                          child: ListTile(
-                            title: Text(
-                                'Email    :  ${homeController.data?.user.email ?? 'Guest'} '),
-                          ),
-                        ),
-                        Card(
-                          elevation: 10,
-                          child: ListTile(
-                            title: Text(
-                                'Alamat :  ${homeController.data?.user.alamat ?? ''} '),
-                          ),
-                        ),
-                        Card(
-                          elevation: 10,
-                          child: ListTile(
-                            title: Text(
-                                'Password  :  ${homeController.data?.user.password ?? ''} '),
                           ),
                         ),
                         const SizedBox(
                           height: 30,
+                        ),
+                        Card(
+                          elevation: 10,
+                          child: ListTile(
+                            title: Text(
+                              'Nik     :  ${user?.nik ?? ''} ',
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 10,
+                          child: ListTile(
+                            title: Text(
+                              'Name   :  ${user?.name ?? 'Guest'} ',
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 10,
+                          child: ListTile(
+                            title: Text(
+                              'Email    :  ${user?.email ?? 'Guest'} ',
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 10,
+                          child: ListTile(
+                            title: Text(
+                              'Alamat :  ${user?.alamat ?? ''} ',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * .3,
+                          height: 80,
+                          padding: const EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              backgroundColor: backgroundss,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute<Widget>(
+                                  builder: (context) => const EditProfilPage(),
+                                ),
+                              );
+                            },
+                            child: const Text('Edit'),
+                          ),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width * .4,
@@ -161,21 +187,22 @@ class _ProfilePageState extends State<ProfilePage> {
                             borderRadius: BorderRadius.circular(50),
                           ),
                           child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(100),
-                                ),
-                                backgroundColor: backgroundss,
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100),
                               ),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const HomePage(),
-                                  ),
-                                );
-                              },
-                              child: const Text('Back to Home')),
+                              backgroundColor: backgroundss,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute<Widget>(
+                                  builder: (context) => const HomePage(),
+                                ),
+                              );
+                            },
+                            child: const Text('Back to Home'),
+                          ),
                         ),
                       ],
                     ),

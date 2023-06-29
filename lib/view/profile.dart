@@ -1,7 +1,6 @@
-import 'package:finalexamflutter/controller/auth_controller.dart';
 import 'package:finalexamflutter/controller/home_controller.dart';
 import 'package:finalexamflutter/model/home_model.dart';
-import 'package:finalexamflutter/model/user_model.dart';
+
 import 'package:finalexamflutter/view/color.dart';
 import 'package:finalexamflutter/view/home_page.dart';
 import 'package:flutter/material.dart';
@@ -14,22 +13,15 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final authController = AuthController();
   final homeController = HomeController();
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final alamatController = TextEditingController();
-  final nikController = TextEditingController();
-  final role = -1;
   final formKey = GlobalKey<FormState>();
   HomeModel? data;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    homeController.initial();
-  }
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   homeController.initial();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +42,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding: const EdgeInsets.only(top: 90, left: 20),
                   color: backgroundss,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                           text: "Profile",
                           style: TextStyle(
                             fontSize: 25,
@@ -63,9 +55,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                           children: [
                             TextSpan(
-                              text: 'Hello, ',
-                              style: const TextStyle(
-                                color: Colors.black,
+                              text:
+                                  '\nHello, ${homeController.data?.user.name ?? ''} ',
+                              style: TextStyle(
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
@@ -121,11 +114,40 @@ class _ProfilePageState extends State<ProfilePage> {
                         const SizedBox(
                           height: 30,
                         ),
-                        const Card(
+                        Card(
                           elevation: 10,
                           child: ListTile(
-                              // title: Text(${homeController.data?.user.name } ),
-                              ),
+                            title: Text(
+                                'Nik     :  ${homeController.data?.user.nik ?? ''} '),
+                          ),
+                        ),
+                        Card(
+                          elevation: 10,
+                          child: ListTile(
+                            title: Text(
+                                'Name   :  ${homeController.data?.user.name ?? 'Guest'} '),
+                          ),
+                        ),
+                        Card(
+                          elevation: 10,
+                          child: ListTile(
+                            title: Text(
+                                'Email    :  ${homeController.data?.user.email ?? 'Guest'} '),
+                          ),
+                        ),
+                        Card(
+                          elevation: 10,
+                          child: ListTile(
+                            title: Text(
+                                'Alamat :  ${homeController.data?.user.alamat ?? ''} '),
+                          ),
+                        ),
+                        Card(
+                          elevation: 10,
+                          child: ListTile(
+                            title: Text(
+                                'Password  :  ${homeController.data?.user.password ?? ''} '),
+                          ),
                         ),
                         const SizedBox(
                           height: 30,

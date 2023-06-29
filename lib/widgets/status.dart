@@ -13,42 +13,43 @@ class Status extends StatelessWidget {
     super.key,
     this.type = StatusType.ready,
     this.isExpand = false,
+    this.isElevated = false,
   });
 
   final StatusType type;
   final bool isExpand;
+  final bool isElevated;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 4,
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(
-          100,
+    return Material(
+      elevation: isElevated ? 2 : 0,
+      color: Colors.white,
+      shape: const StadiumBorder(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 8,
+          vertical: 4,
         ),
-        color: Colors.white,
-      ),
-      child: Row(
-        children: [
-          Container(
-            height: 7,
-            width: 7,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              color: changeStatusColor(type),
+        child: Row(
+          children: [
+            Container(
+              height: 7,
+              width: 7,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: changeStatusColor(type),
+              ),
             ),
-          ),
-          if (isExpand) ...[
-            const SizedBox(width: 8),
-            Text(
-              changeStatusText(type),
-              style: const TextStyle(color: Colors.black, fontSize: 12),
-            ),
-          ]
-        ],
+            if (isExpand) ...[
+              const SizedBox(width: 8),
+              Text(
+                changeStatusText(type),
+                style: const TextStyle(color: Colors.black, fontSize: 12),
+              ),
+            ]
+          ],
+        ),
       ),
     );
   }

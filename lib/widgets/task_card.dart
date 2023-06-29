@@ -11,6 +11,7 @@ class TaskCard extends StatelessWidget {
     this.maxTitleLines = 1,
     this.isStatusExpanded = false,
     this.onBack,
+    this.onDelete,
     super.key,
   });
 
@@ -19,6 +20,7 @@ class TaskCard extends StatelessWidget {
   final bool isStatusExpanded;
   final int maxTitleLines;
   final VoidCallback? onBack;
+  final VoidCallback? onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -49,56 +51,57 @@ class TaskCard extends StatelessWidget {
           color: backgroundss,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
-            Text(
-              item.title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+            if (onDelete != null) ...[
+              IconButton(
+                onPressed: onDelete,
+                icon: const Icon(
+                  Icons.delete_outline,
+                  color: Colors.white,
+                ),
               ),
-              maxLines: maxTitleLines,
-              overflow: TextOverflow.ellipsis,
-            ),
-            if (maxTitleLines <= 2) ...[
-              const Spacer(),
             ],
-            const SizedBox(height: 8),
-            Row(
-              children: [
-                if (isDeptHead)
+            const SizedBox(width: 8),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Text(
-                    item.member,
+                    item.title,
                     style: const TextStyle(
                       color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
+                    maxLines: maxTitleLines,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                const Spacer(),
-                Status(
-                  type: StatusType.values.firstWhere(
-                    (element) => element.index == (item.status - 1),
-                  ),
-                  isExpand: isStatusExpanded,
-                ),
-                // IconButton(
-                //   onPressed: () {
-                //     // taskController.deleteContact(id).then(
-                //     //   (value) {
-                //     //     setState(() {
-                //     //       taskController.initial();
-                //     //     });
-                //     //   },
-                //     // );
-                //   },
-                //   icon: const Icon(
-                //     Icons.delete_outline_outlined,
-                //     color: Colors.white,
-                //   ),
-                // ),
-              ],
-            )
+                  if (maxTitleLines <= 2) ...[
+                    const Spacer(),
+                  ],
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      if (isDeptHead)
+                        Text(
+                          item.member,
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      const Spacer(),
+                      Status(
+                        type: StatusType.values.firstWhere(
+                          (element) => element.index == (item.status - 1),
+                        ),
+                        isExpand: isStatusExpanded,
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -1,7 +1,7 @@
 import 'package:finalexamflutter/controller/home_controller.dart';
 import 'package:finalexamflutter/model/home_model.dart';
-import 'package:finalexamflutter/view/color.dart';
 import 'package:finalexamflutter/view/login.dart';
+import 'package:finalexamflutter/view/profile.dart';
 import 'package:finalexamflutter/view/task.dart';
 import 'package:finalexamflutter/widgets/task_card.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
       future: homeController.initial(),
       builder: (context, snapshot) {
         return Scaffold(
-          backgroundColor: backgroundColor,
+          backgroundColor: Colors.white,
           body: SafeArea(
             child: ListView(
               padding: const EdgeInsets.all(16),
@@ -45,9 +45,9 @@ class _HomePageState extends State<HomePage> {
     return Column(
       children: [
         Row(
-          children: [
+          children: const [
             Icon(Icons.calendar_month),
-            const Text(
+            Text(
               'Hari Ini',
               style: TextStyle(
                 fontSize: 20,
@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                 width: 64,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
-                  color: Colors.blue,
+                  color: Colors.amber,
                 ),
                 child: const Icon(
                   Icons.my_library_books_outlined,
@@ -124,19 +124,29 @@ class _HomePageState extends State<HomePage> {
           ),
           Column(
             children: [
-              Container(
-                height: 64,
-                width: 64,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.amber,
-                ),
-                child: const Icon(
-                  Icons.person_2_outlined,
-                  color: Colors.white,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfilePage(),
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 64,
+                  width: 64,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.amber,
+                  ),
+                  child: const Icon(
+                    Icons.person_2_outlined,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              const Text('Anggota')
+              const Text('Profile')
             ],
           ),
         ]

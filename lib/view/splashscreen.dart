@@ -46,16 +46,17 @@ class _SplashScreenState extends State<SplashScreen>
     var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: backgroundss,
-      body: Stack(children: [
-        AnimatedContainer(
-          duration: const Duration(seconds: 3),
-          height: ssAnimated ? screenHeight / 1.9 : screenHeight,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(ssAnimated ? 40.0 : 0.0)),
-          ),
-          child: Column(
+      body: Stack(
+        children: [
+          AnimatedContainer(
+            duration: const Duration(seconds: 3),
+            height: ssAnimated ? screenHeight / 1.9 : screenHeight,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(ssAnimated ? 40.0 : 0.0)),
+            ),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -88,9 +89,10 @@ class _SplashScreenState extends State<SplashScreen>
                     child: const Text(
                       'T A S K ',
                       style: TextStyle(
-                          fontSize: 40.0,
-                          color: backgroundss,
-                          fontWeight: FontWeight.bold),
+                        fontSize: 40.0,
+                        color: backgroundss,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -104,10 +106,12 @@ class _SplashScreenState extends State<SplashScreen>
                     ),
                   ),
                 ),
-              ]),
-        ),
-        Visibility(visible: ssAnimated, child: const _BottomPart()),
-      ]),
+              ],
+            ),
+          ),
+          Visibility(visible: ssAnimated, child: const _BottomPart()),
+        ],
+      ),
     );
   }
 }
@@ -131,9 +135,10 @@ class _BottomPart extends StatelessWidget {
             const Text(
               'Hello !',
               style: TextStyle(
-                  fontSize: 27.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+                fontSize: 27.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
             const SizedBox(height: 30.0),
             Text(
@@ -151,14 +156,17 @@ class _BottomPart extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
                   backgroundColor: Colors.white,
                 ),
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginPage(),
+                    ),
+                  );
                 },
                 child: Text(
                   'Sign In'.toUpperCase(),
@@ -175,17 +183,19 @@ class _BottomPart extends StatelessWidget {
                   style: TextStyle(fontSize: 15, color: Colors.white),
                 ),
                 TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const RegisterPage()));
-                    },
-                    child: const Text(
-                      "Sign Up",
-                      style:
-                          TextStyle(color: Color.fromARGB(255, 255, 175, 55)),
-                    ))
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RegisterPage(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Sign Up",
+                    style: TextStyle(color: Color.fromARGB(255, 255, 175, 55)),
+                  ),
+                )
               ],
             ),
             // Align(

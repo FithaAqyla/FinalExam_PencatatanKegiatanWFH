@@ -102,7 +102,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Column(
                       children: [
                         Container(
-                          //
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(30),
@@ -125,8 +124,36 @@ class _ProfilePageState extends State<ProfilePage> {
                         const Card(
                           elevation: 10,
                           child: ListTile(
-                            title: Text(',${homeController.data?.user.name ?? } ',),
+                              // title: Text(${homeController.data?.user.name } ),
+                              ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * .4,
+                          height: 80,
+                          padding: const EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(50),
                           ),
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                backgroundColor: backgroundss,
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HomePage(),
+                                  ),
+                                );
+                              },
+                              child: const Text('Back to Home')),
                         ),
                       ],
                     ),

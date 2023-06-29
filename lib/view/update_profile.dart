@@ -289,10 +289,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
                                 ),
                               );
                             },
-                            child: const Icon(
-                              Icons.arrow_forward,
-                              color: Colors.white,
-                            ),
+                            child: const Text('SAVE'),
                           ),
                         ),
                       ],
